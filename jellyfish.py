@@ -1,23 +1,24 @@
 # import jellyfish._jellyfish as pyjellyfish
 # import jellyfish.cjellyfish as cjellyfish
-#nil duman
+#nil.duman
 import jellyfish as jf
-# import ackley 
+#kelimenin fonetik incelemesi
 
-j=jf.levenshtein_distance(u'jellyfish', u'smellyfish')
-jarojf=jf.jaro_distance(u'jellyfish', u'smellyfish')
+#jellyfish in fonksiyonları
+
+j=jf.levenshtein_distance(u'jellyfish', u'smellyfish') # levenshtein_distance  girilen 2 kelime arasında kaç harfin farklı olduğunu bulan fonsiyon
+jarojf=jf.jaro_distance(u'jellyfish', u'smellyfish') #jaro_distance girilen 2 kerlime arasındaki benzerliği yüzde olarak bulan fonksiyon
 jf.damerau_levenshtein_distance(u'jellyfish', u'jellyfihs')
 jf.metaphone(u'Jellyfish')
-s=jf.soundex(u'Jellyfish')
+s=jf.soundex(u'Jellyfish') #girilen kelimenin fonetik kodlamasını yapar
 jf.nysiis(u'Jellyfish')
 jf.match_rating_codex(u'Jellyfish')
 jf.match_rating_codex(u'Jellyfish')
 
-import numpy as np
-from random import random
+
+
 import math
-import matplotlib
-import matplotlib.pyplot as plt
+
 """
 def Jellyfish():
      a=input("lütfen karşılaştıracağınız 1. kelimeyi giriniz:")#jellyfish
@@ -135,7 +136,8 @@ def LEVI(x, y):
     return val
     
 
-def Levenshtein_Distance():
+def Levenshtein_Distance(): #girilen iki kelimede kaç harfin farklı olduğunu bulur
+      print("Levenshtein_Distance")
       a=input("lütfen karşılaştıracağınız 1. kelimeyi giriniz:")#jellyfish
       b=input("lütfen karşılaştıracağınız 2. kelimeyi giriniz:")#smellyfish
       i=len(a)
@@ -151,7 +153,7 @@ def Levenshtein_Distance():
         fark=k-i
     
       farklilik=0
-      for j in range((kelimeuzunlugu-1),0,-1):
+      for j in range((kelimeuzunlugu-1),0,-1): #farklılıkları kontrol ediyoruz. Son harften başlayarak
           if a[j] != b[j]:
               farklilik+=1
     
@@ -165,7 +167,8 @@ def Levenshtein_Distance():
       
 Levenshtein_Distance()
 
-def Soundex():
+def Soundex(): #girilen kelimenin fonetik karşılığı
+    print("SOUNDEX")
     a=str(input("soundex karşılığını alacağınız kelimeyi giriniz"))
     kelime=[]
     b=len(a)
@@ -195,8 +198,9 @@ def Soundex():
     # print("LEVI:",LEVI(s,kelime))
 Soundex()    
 
-def Jaro_distance():
-    
+def Jaro_distance(): # girilen 2 kelime arasındaki benzerliği yüzde olarak bulan fonksiyon
+      print("Jaro_Distance")
+     
       a=input("lütfen karşılaştıracağınız 1. kelimeyi giriniz:")#jellyfish
       b=input("lütfen karşılaştıracağınız 2. kelimeyi giriniz:")#smellyfish
       i=len(a)
@@ -210,65 +214,22 @@ def Jaro_distance():
       else:
         kelimeuzunlugu=i
         fark=k-i
-    
+
       farklilik=0
       for j in range((kelimeuzunlugu-1),0,-1):
           if a[j] != b[j]:
-              farklilik+=1
-    
+              farklilik +=1
+
       farklilik +=fark 
-      jaro=farklilik/kelimeuzunlugu
+      jaro=(farklilik/kelimeuzunlugu)
       print(jaro)
       print("Jaro_distance Karşılaştırma Çıktıları")
       print("Ackley:" ,ACKLEY(jarojf,jaro))
       print("BEALE:",BEALE(jarojf,jaro))
       print("GSP:",GSP(jarojf,jaro))
       print("LEVI:",LEVI(jarojf,jaro))
+     
     
 Jaro_distance()  
 
 
-
-# # LEVI TEST FONKSIYONU alt sınırları
-# LEVI_LOWER_BOUNDARY = [-10, -10]
-# # LEVI TEST FONKSIYONU üst sınırları
-# LEVI_UPPER_BOUNDARY = [10, 10]  
-
-# # MAIN fonksiyonu
-# def main():
-#     # Deniz Anası optimizasyonu metodumuz çalıştırılıyor
-#     try:
-#         Jellyfish()
-#     except Exception as e:
-#         print(e)
-
-# if __name__ == "__main__":
-#     main()
-   
-#     # Verilerin grafiksel olarak ifade edilmes için kullanılan fonksiyon
-# def createPlot(OBJECTIVE_ARRAY, LOCATION_ARRAY):
-#     fig = plt.figure() # Yeni bir figür oluşturuluyor
-#     ax1 = fig.add_subplot(211) # Yeni bir alan oluşturuluyor row = 2, col = 1, index = 1
-#     ax1.plot(OBJECTIVE_ARRAY,'g.-') # Objective değerleri ax1 alanına dahil ediliyor, yeşil renk
-#     ax1.legend(['Objective']) # Objective grafiğine özel başlık veriliyor
-
-#     ax2 = fig.add_subplot(212) # Yeni bir alan oluşturuluyor row = 2, col = 3, index = 2
-#     LOCATION_X = [] # X lokasyon değerleri için başlangıç dizisi oluşturuluyor 
-#     LOCATION_Y = [] # Y lokasyon değerleri için başlangıç dizisi oluşturuluyor 
-#     for i in range(len(LOCATION_ARRAY)):
-#         # X lokasyon değerleri güncelleniyor
-#         LOCATION_X.append(LOCATION_ARRAY[i][0])
-#         # Y lokasyon değerleri güncelleniyor
-#         LOCATION_Y.append(LOCATION_ARRAY[i][1])
-
-#     # X lokasyon değerleri ax2 alanına dahil ediliyor, mavi renk
-#     ax2.plot(LOCATION_X, 'b.-')
-#     # Y lokasyon değerleri ax2 alanına dahil ediliyor, kırmızı renk
-#     ax2.plot(LOCATION_Y, 'r--')
-#     # X ve Y grafiklerine özel başlık veriliyor
-#     ax2.legend(['x','y'])
-
-#     # Alanlar ekrana çizdiriliyor
-#     plt.show()
-# createPlot()
-        
